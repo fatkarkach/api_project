@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api_project</title>
+</head>
+<body>
+    
+   <form onsubmit="return login()">
+       username:<input type="text" name="username" id="username"><br><br>
+       Password:<input type="password"  name="password" id="password"><br><br>
+       <input type="submit" value="login">
+   </form>
+</body>
+<script src="jquery-2.x-git.min.js"></script>
+<script>
+   function login()
+   {
+       var username=$('#username').val();
+       var password=$('#password').val();
+       $.post("http://localhost/api_project/login.php",
+       {username: username, password: password},
+       function(data)
+       {
+           if(parseInt(data.flag)==1)
+           {
+               alert("login sucess");
+           }
+           else
+           {
+               alert("login faild");
+           }
+       },'json');
+       return false;
+   }
+</script>
+</html>

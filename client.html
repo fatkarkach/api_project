@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api_project</title>
+</head>
+<body>
+    <ul id="blogs">
+
+    </ul>
+    
+    <script src="jquery-2.x-git.min.js"></script>
+    <script>
+        $(function()
+        {
+            //inserer data de reponse  dans la fonction 
+            //data c'est un tableau
+            $.get("http://localhost/api_project/",function(data){
+                if(data.flag ==1){
+                //data por la fonction et l'autre c'est key de notre data
+                for(var i=0;i<data.data.length;i++)
+                {
+                    $('#blogs').append("<li>"+data.data[i].blog_title+"</li>");
+
+                }
+
+                }
+                else{
+                    alert(data.msg);
+                }
+
+
+            },'json');
+
+        }
+        )
+    </script>
+</body>
+</html>
